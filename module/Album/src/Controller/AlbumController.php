@@ -28,6 +28,32 @@ class AlbumController extends AbstractActionController
             'albums' => $this->table->fetchAll(),
         ]);
     }
+    //$this->getEvent()->getRouteMatch()->getParam('action', 'index');
+    //$this->getEvent()->getRouteMatch()->getParam('controller', 'index');
+    public function doSomethingCrazyAction()
+    {
+        // Get the "layout" view model and inject a sidebar
+//        $layout = $this->layout();
+//        $sidebarView = new ViewModel();
+//        $sidebarView->setTemplate('content/sidebar');
+//        $layout->addChild($sidebarView, 'sidebar');
+
+        // Create and return a view model for the retrieved article
+//        $view = new ViewModel(array('article' => $article));
+//        $view->setTemplate('content/article');
+
+        // Get the "layout" view model and set an alternate template
+//        $layout = $this->layout();
+//        $layout->setTemplate('article/layout');
+
+        $view = new ViewModel(array(
+            'message' => 'Hello world',
+        ));
+//        $view->setTemplate('Album/Album/doSomething');
+        // 关闭布局；`MvcEvent` 将使用这个视图模型实例
+        $view->setTerminal(true);
+        return $view;
+    }
 
     public function addAction()
     {
@@ -40,4 +66,5 @@ class AlbumController extends AbstractActionController
     public function deleteAction()
     {
     }
+
 }
