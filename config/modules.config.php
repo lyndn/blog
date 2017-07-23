@@ -14,6 +14,5 @@ return [
     'Zend\Router',
     'Zend\Db',
     'Zend\Validator',
-//    'Application',
-    'Blog',           //<-- Add this line;
+    'Yanc',           //<-- Add this line;
 ];

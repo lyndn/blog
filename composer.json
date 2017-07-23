@@ -90,7 +90,7 @@
     },
     "autoload": {
         "psr-4": {
-              "Blog\\" : "module/Blog/src/"
+              "Yanc\\" : "module/Yanc/src/"
         }
     }
 }

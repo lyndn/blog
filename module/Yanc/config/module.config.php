@@ -5,37 +5,31 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Blog;
+namespace Yanc;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-    // The following section is new and should be added to your file:
     'router' => [
         'routes' => [
-//            'home' => [
-//                'type' => Literal::class,
-//                'options' => [
-//                    'route'    => '/',
-//                    'defaults' => [
-//                        'controller' => Controller\HomeAction::class,
-//                        'action'     => 'index',
-//                    ],
-//                ],
+            'home' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'index',
+                    ],
+                ],
             ],
-            //大小写敏感
-            'Article' => [
+            'yanc' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route' => '/Article[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
+                    'route'    => '/yanc[/:action]',
                     'defaults' => [
-                        'controller' => Controller\ArticleAction::class,
+                        'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -44,8 +38,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\ArticleAction::class => InvokableFactory::class,
-            Controller\HomeAction::class => InvokableFactory::class,
+            Controller\IndexController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
@@ -81,7 +74,7 @@ return [
             // 这里，我们使用 "site/layout"。
             // 我们通过上面提到的模板映射解析器（TemplateMapResolver）来映射。
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'yanc/index/index' => __DIR__ . '/../view/yanc/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
